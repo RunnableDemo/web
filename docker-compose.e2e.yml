@@ -1,5 +1,13 @@
 version: '2'
 services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - "api"
+    environment:
+      - API_HOST=api:3000
   db:
     image: mongo
     ports:
@@ -19,14 +27,6 @@ services:
       - "db"
     environment:
       - MONGODB_HOST=db
-  web:
-    build: .
-    ports:
-      - "80:80"
-    links:
-      - "api"
-    environment:
-      - API_HOST=api:3000
   e2e:
     build: 
       context: git@github.com:DockerCon2017/e2e.git
