@@ -38,7 +38,7 @@ services:
     links:
       - "web"
       - "chrome"
-    command: ./wait-for-it.sh chrome:4444/wd/hub/status -- npm test
+    command: sleep 10 && npm test
     environment:
       - WEB_URL=http://web
       - NODE_ENV=docker
